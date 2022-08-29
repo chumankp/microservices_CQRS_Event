@@ -26,21 +26,21 @@ public class UserAggregate {
 
     private final PasswordEncoder passwordEncoder;
 
-    public UserAggregate(){
+    public UserAggregate() {
         passwordEncoder = new PasswordEncoderImpl();
     }
 
     @CommandHandler
-    public UserAggregate(RegisterUserCommand registerUserCommand){
-        var newUser = registerUserCommand.getUser();
-        newUser.setId(registerUserCommand.getId());
+    public UserAggregate(RegisterUserCommand command) {
+        var newUser = command.getUser();
+        newUser.setId(command.getId());
         var password = newUser.getAccount().getPassword();
         passwordEncoder = new PasswordEncoderImpl();
         var hashedPassword = passwordEncoder.hashPassword(password);
         newUser.getAccount().setPassword(hashedPassword);
 
         var event = UserRegisteredEvent.builder()
-                .id(registerUserCommand.getId())
+                .id(command.getId())
                 .user(newUser)
                 .build();
 
@@ -48,9 +48,9 @@ public class UserAggregate {
     }
 
     @CommandHandler
-    public void handler(UpdateUserCommand updateUserCommand){
-        var updatedUser = updateUserCommand.getUser();
-        updatedUser.setId(updateUserCommand.getId());
+    public void handle(UpdateUserCommand command) {
+        var updatedUser = command.getUser();
+        updatedUser.setId(command.getId());
         var password = updatedUser.getAccount().getPassword();
         var hashedPassword = passwordEncoder.hashPassword(password);
         updatedUser.getAccount().setPassword(hashedPassword);
@@ -64,28 +64,26 @@ public class UserAggregate {
     }
 
     @CommandHandler
-    public void handler(RemoveUserCommand removeUserCommand){
+    public void handle(RemoveUserCommand command) {
         var event = new UserRemovedEvent();
-        event.setId(removeUserCommand.getId());
+        event.setId(command.getId());
 
         AggregateLifecycle.apply(event);
     }
 
     @EventSourcingHandler
-    public void on(UserRegisteredEvent userRegisteredEvent) {
-        this.id = userRegisteredEvent.getId();
-        this.user = userRegisteredEvent.getUser();
+    public void on(UserRegisteredEvent event) {
+        this.id = event.getId();
+        this.user = event.getUser();
     }
 
     @EventSourcingHandler
-    public void on(UserUpdatedEvent userUpdatedEvent) {
-        this.user = userUpdatedEvent.getUser();
+    public void on(UserUpdatedEvent event) {
+        this.user = event.getUser();
     }
 
     @EventSourcingHandler
-    public void on(UserRemovedEvent userRemovedEvent) {
+    public void on(UserRemovedEvent event) {
         AggregateLifecycle.markDeleted();
     }
-
-
 }
