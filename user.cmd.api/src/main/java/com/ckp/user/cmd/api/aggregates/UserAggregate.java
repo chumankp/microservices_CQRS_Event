@@ -1,6 +1,5 @@
 package com.ckp.user.cmd.api.aggregates;
 
-
 import com.ckp.user.cmd.api.commands.RegisterUserCommand;
 import com.ckp.user.cmd.api.commands.RemoveUserCommand;
 import com.ckp.user.cmd.api.commands.UpdateUserCommand;

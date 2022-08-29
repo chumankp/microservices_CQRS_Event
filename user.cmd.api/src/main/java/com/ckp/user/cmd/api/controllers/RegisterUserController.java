@@ -17,7 +17,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping(path = "/api/v1/registerUser")
 public class RegisterUserController {
-
     private final CommandGateway commandGateway;
 
     @Autowired
