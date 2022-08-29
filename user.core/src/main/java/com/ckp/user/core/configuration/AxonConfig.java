@@ -66,10 +66,10 @@ public class AxonConfig {
     }
 
     @Bean
-    public EmbeddedEventStore eventStore(EventStorageEngine storageEngine, AxonConfiguration configuration) {
+    public EmbeddedEventStore eventStore(EventStorageEngine storageEngine, AxonConfiguration configurations) {
         return EmbeddedEventStore.builder()
                 .storageEngine(storageEngine)
-                .messageMonitor(configuration.messageMonitor(EventStore.class, "eventStore"))
+                .messageMonitor(configurations.messageMonitor(EventStore.class, "eventStore"))
                 .build();
     }
 }
