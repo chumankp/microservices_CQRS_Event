@@ -20,21 +20,21 @@ public class UserEventHandlerImpl implements UserEventHandler {
         this.userRepository = userRepository;
     }
 
-
+    @EventHandler
     @Override
-    public void on(UserRegisteredEvent userRegisteredEvent) {
-        userRepository.save(userRegisteredEvent.getUser());
+    public void on(UserRegisteredEvent event) {
+        userRepository.save(event.getUser());
     }
 
     @EventHandler
     @Override
-    public void on(UserUpdatedEvent userUpdatedEvent) {
-        userRepository.save(userUpdatedEvent.getUser());
+    public void on(UserUpdatedEvent event) {
+        userRepository.save(event.getUser());
     }
 
     @EventHandler
     @Override
-    public void on(UserRemovedEvent userRemovedEvent) {
-        userRepository.deleteById(userRemovedEvent.getId());
+    public void on(UserRemovedEvent event) {
+        userRepository.deleteById(event.getId());
     }
 }

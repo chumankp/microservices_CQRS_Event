@@ -5,7 +5,7 @@ import com.ckp.user.core.events.UserRemovedEvent;
 import com.ckp.user.core.events.UserUpdatedEvent;
 
 public interface UserEventHandler {
-    void on(UserRegisteredEvent userRegisteredEvent);
-    void on(UserUpdatedEvent userUpdatedEvent);
-    void on(UserRemovedEvent userRemovedEvent);
+    void on(UserRegisteredEvent event);
+    void on(UserUpdatedEvent event);
+    void on(UserRemovedEvent event);
 }
