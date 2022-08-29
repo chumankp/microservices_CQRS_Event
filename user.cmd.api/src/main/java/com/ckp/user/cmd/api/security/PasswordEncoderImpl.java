@@ -1,4 +1,4 @@
-package com.ckp.user.core.security;
+package com.ckp.user.cmd.api.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -9,6 +9,7 @@ public class PasswordEncoderImpl implements PasswordEncoder {
     public String hashPassword(String password) {
         var encoder = new BCryptPasswordEncoder(12);
         var hashedPassword = encoder.encode(password);
+
         return hashedPassword;
     }
 }
