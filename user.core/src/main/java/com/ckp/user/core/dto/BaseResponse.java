@@ -1,9 +1,10 @@
 package com.ckp.user.core.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class BaseResponse {
     private String message;

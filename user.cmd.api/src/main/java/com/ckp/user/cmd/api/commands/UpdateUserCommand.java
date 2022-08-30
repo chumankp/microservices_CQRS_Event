@@ -1,14 +1,16 @@
 package com.ckp.user.cmd.api.commands;
 
 import com.ckp.user.core.models.User;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class UpdateUserCommand {
     @TargetAggregateIdentifier

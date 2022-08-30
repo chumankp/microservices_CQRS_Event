@@ -1,10 +1,11 @@
 package com.ckp.user.cmd.api.commands;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class RemoveUserCommand {
     @TargetAggregateIdentifier

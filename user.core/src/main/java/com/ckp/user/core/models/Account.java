@@ -1,17 +1,15 @@
 package com.ckp.user.core.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Account {
     @Size(min = 2, message = "username must have a minimum of 2 characters")

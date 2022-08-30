@@ -26,7 +26,7 @@ import java.util.Collections;
 
 @Configuration
 public class AxonConfig {
-    @Value("${spring.data.mongodb.host:127.0. 0.1}")
+    @Value("${spring.data.mongodb.host:localhost}")
     private String mongoHost;
 
     @Value("${spring.data.mongodb.port:27017}")
@@ -34,12 +34,6 @@ public class AxonConfig {
 
     @Value("${spring.data.mongodb.database:user}")
     private String mongoDatabase;
-
-    private AxonConfiguration configuration;
-
-    public AxonConfig(AxonConfiguration configuration) {
-        this.configuration = configuration;
-    }
 
     @Bean
     public MongoClient mongo() {
@@ -82,7 +76,7 @@ public class AxonConfig {
     }
 
     @Bean
-    public EmbeddedEventStore eventStore(EventStorageEngine storageEngine) {
+    public EmbeddedEventStore eventStore(EventStorageEngine storageEngine, AxonConfiguration configuration) {
         return EmbeddedEventStore.builder()
                 .storageEngine(storageEngine)
                 .messageMonitor(configuration.messageMonitor(EventStore.class, "eventStore"))

@@ -1,8 +1,11 @@
 package com.ckp.user.core.events;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserRemovedEvent {
     private String id;
 }

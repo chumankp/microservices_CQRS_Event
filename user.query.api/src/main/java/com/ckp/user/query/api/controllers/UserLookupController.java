@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/api/v1/userLookup")
 public class UserLookupController {
-    @Transient
     private final QueryGateway queryGateway;
 
     @Autowired

@@ -1,9 +1,10 @@
 package com.ckp.user.query.api.queries;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class FindUserByIdQuery {
     private String id;
