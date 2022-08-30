@@ -15,15 +15,18 @@ import org.axonframework.extensions.mongo.eventsourcing.tokenstore.MongoTokenSto
 import org.axonframework.serialization.Serializer;
 import org.axonframework.serialization.json.JacksonSerializer;
 import org.axonframework.spring.config.AxonConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Collections;
 
 @Configuration
 public class AxonConfig {
-    @Value("${spring.data.mongodb.host:127.0.0.1}")
+    @Value("${spring.data.mongodb.host:127.0. 0.1}")
     private String mongoHost;
 
     @Value("${spring.data.mongodb.port:27017}")
@@ -31,6 +34,12 @@ public class AxonConfig {
 
     @Value("${spring.data.mongodb.database:user}")
     private String mongoDatabase;
+
+    private AxonConfiguration configuration;
+
+    public AxonConfig(AxonConfiguration configuration) {
+        this.configuration = configuration;
+    }
 
     @Bean
     public MongoClient mongo() {
@@ -73,7 +82,7 @@ public class AxonConfig {
     }
 
     @Bean
-    public EmbeddedEventStore eventStore(EventStorageEngine storageEngine, AxonConfiguration configuration) {
+    public EmbeddedEventStore eventStore(EventStorageEngine storageEngine) {
         return EmbeddedEventStore.builder()
                 .storageEngine(storageEngine)
                 .messageMonitor(configuration.messageMonitor(EventStore.class, "eventStore"))

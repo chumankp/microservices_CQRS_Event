@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.springbank</groupId>
+    <groupId>org.ckp</groupId>
     <artifactId>user-management</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
@@ -13,5 +13,6 @@
         <module>user.core</module>
         <module>user.cmd.api</module>
         <module>user.query.api</module>
+        <module>user.oauth2.0</module>
     </modules>
 </project>

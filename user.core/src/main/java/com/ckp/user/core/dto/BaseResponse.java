@@ -1,4 +1,4 @@
-package com.ckp.user.cmd.api.dto;
+package com.ckp.user.core.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

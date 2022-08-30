@@ -1,7 +1,7 @@
 package com.ckp.user.cmd.api.controllers;
 
 import com.ckp.user.cmd.api.commands.RemoveUserCommand;
-import com.ckp.user.cmd.api.dto.BaseResponse;
+import com.ckp.user.core.dto.BaseResponse;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
